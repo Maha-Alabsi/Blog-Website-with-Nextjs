@@ -1,32 +1,37 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { Button, Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 import useStyles from './../../components/useStyles';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './../../components/theme';
 import Container from '@material-ui/core/Container';
+import Link from 'next/link';
 
-export const getStaticPaths = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const posts = await res.json();
-  const paths = posts.map(post => {
-    return {
-      params: { id: post.id.toString() },
-    };
-  });
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps = async content => {
-  const id = content.params.id;
+export const getStaticProps = async (context) => {
+  const id = context.params.id;
   const res = await fetch('https://jsonplaceholder.typicode.com/posts/' + id);
   const post = await res.json();
   return {
     props: { post },
   };
 };
+
+export const getStaticPaths = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const posts = await res.json();
+  //to get array of the posts ids
+  const ids= posts.map(post => {
+    return  post.id 
+  });
+  const paths = ids.map(id => {
+    return {
+      params: { id: id.toString() },
+    };
+  });
+  return {
+    paths,
+    fallback: false,
+  };
+}; 
 
 const post = ({ post }) => {
   const classes = useStyles();
@@ -51,6 +56,15 @@ const post = ({ post }) => {
               {post.body}
             </Typography>
           </CardContent>
+          <Link href="/blog">
+          <Button 
+          variant='outlined'
+          size='small'
+          color='secondery'
+          style={{margin:'10px'}}>
+            Go Back
+          </Button>
+          </Link>
         </Card>
       </Container>
     </ThemeProvider>

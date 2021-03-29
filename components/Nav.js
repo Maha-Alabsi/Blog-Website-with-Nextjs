@@ -1,6 +1,5 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import useStyles from './useStyles';
 import styles from '../styles/Layout.module.css';
 import Link from 'next/link';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -8,13 +7,11 @@ import theme from './theme';
 import { AppBar, Toolbar } from '@material-ui/core';
 
 const Nav = () => {
-  const classes = useStyles();
-
   return (
     <ThemeProvider theme={theme}>
       <div>
         <AppBar>
-          <Toolbar>
+          <Toolbar className={styles.navgrid}>
             <Link href='/'>
               <a>
                 <Typography variant='h5' className={styles.navItem}>

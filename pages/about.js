@@ -7,8 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 const about = () => {
   return (
     <div className={styles.container}>
-      <h1>About</h1>
-      <Container maxWidth='md'>
+      <h1 className={styles.title}>About</h1>
+      <Container maxWidth='md' style={{ marginTop: '20px' }}>
         <Card variant='outlined'>
           <CardContent>
             <p>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PostsList from '../../components/PostsList';
+import styles from '../../styles/Home.module.css';
 
 export const getStaticProps = async () => {
   const res = await fetch(
@@ -13,9 +14,9 @@ export const getStaticProps = async () => {
 function Blog({ posts }) {
   console.log(posts);
   return (
-    <div>
-      <h1>Blog page</h1>
-      <PostsList posts={posts} />
+    <div className={styles.container}>
+      <h1 className={styles.title}>Blog Posts</h1>
+      <PostsList posts={posts} style={{ marginTop: '30px' }} />
     </div>
   );
 }

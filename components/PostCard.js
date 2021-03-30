@@ -38,7 +38,7 @@ const PostCard = ({ post }) => {
         />
         <CardMedia
           className={classes.media}
-          image={`https://source.unsplash.com/720x400/?${post.id}`}
+          image={`https://source.unsplash.com/1600x900/?nature/?${post.id}`}
           title={post.title}
         />
         <CardContent>

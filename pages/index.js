@@ -4,7 +4,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Image from 'next/image';
-import { Card, Typography } from '@material-ui/core';
 
 function Home() {
   return (

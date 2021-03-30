@@ -13,48 +13,11 @@ import theme from './../../components/theme';
 import Container from '@material-ui/core/Container';
 import Link from 'next/link';
 import { server } from '../../config/index';
+import MetaData from './../../components/MetaData'
+
 
 //get data from external API
-export const getStaticProps = async (context) => {
-  const id = context.params.id;
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts/' + id);
-  const post = await res.json();
-  return {
-    props: { post },
-  };
-};
-
-// //get data from apiData by id // API route
-// export const getStaticProps = async context => {
-//   const id = context.params.id;
-//   const res = await fetch(`${server}/api/posts/${id}`);
-//   const post = await res.json();
-//   return {
-//     props: { post },
-//   };
-// };
-
-// //get data from apiData // API route
-// export const getStaticPaths = async () => {
-//   const res = await fetch(`${server}/api/posts`);
-//   const posts = await res.json();
-//   //to get array of the posts ids
-//   const ids = posts.map(post => {
-//     return post.id;
-//   });
-//   const paths = ids.map(id => {
-//     return {
-//       params: { id: id.toString() },
-//     };
-//   });
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
-
-//get data from external API
-
+//create (page) path for each id 
 export const getStaticPaths = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts');
   const posts = await res.json();
@@ -73,10 +36,22 @@ export const getStaticPaths = async () => {
   };
 };
 
+//get data from external API
+//get data for each id
+export const getStaticProps = async (context) => {
+  const id = context.params.id;
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts/' + id);
+  const post = await res.json();
+  return {
+    props: { post },
+  };
+};
+
 const post = ({ post }) => {
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
+      <MetaData title = {post.title}/>
       <Container maxWidth='md' style={{ marginTop: '80px' }}>
         <Typography variant='h4' gutterBottom>
           {post.title}
@@ -112,3 +87,34 @@ const post = ({ post }) => {
   );
 };
 export default post;
+
+
+
+// //get data from apiData by id // API route
+// export const getStaticProps = async context => {
+//   const id = context.params.id;
+//   const res = await fetch(`${server}/api/posts/${id}`);
+//   const post = await res.json();
+//   return {
+//     props: { post },
+//   };
+// };
+
+// //get data from apiData // API route
+// export const getStaticPaths = async () => {
+//   const res = await fetch(`${server}/api/posts`);
+//   const posts = await res.json();
+//   //to get array of the posts ids
+//   const ids = posts.map(post => {
+//     return post.id;
+//   });
+//   const paths = ids.map(id => {
+//     return {
+//       params: { id: id.toString() },
+//     };
+//   });
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };

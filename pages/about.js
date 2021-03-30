@@ -3,10 +3,12 @@ import styles from '../styles/Home.module.css';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import MetaData from './../components/MetaData'
 
 const about = () => {
   return (
     <div className={styles.container}>
+      <MetaData title = 'About'/>
       <h1 className={styles.title}>About</h1>
       <Container maxWidth='md' style={{ marginTop: '20px' }}>
         <Card variant='outlined'>

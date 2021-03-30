@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme';
 import { AppBar, Toolbar } from '@material-ui/core';
+// import {useRouter} from 'next/router';
 
 const Nav = () => {
   return (

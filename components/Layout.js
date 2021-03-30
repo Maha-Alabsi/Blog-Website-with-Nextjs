@@ -1,15 +1,13 @@
 import React from 'react';
 import styles from '../styles/Layout.module.css';
-import Head from 'next/head';
 import Nav from './Nav';
 import Footer from './Footer';
+import MetaData from './MetaData'
+
 const Layout = ({ children }) => {
   return (
     <div>
-      <Head>
-        <title>Next App</title>
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
+      <MetaData/>
       <Nav />
       <main className={styles.main}>{children}</main>
       <Footer />

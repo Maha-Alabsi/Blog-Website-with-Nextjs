@@ -1,9 +1,9 @@
 // This file for rendering all posts from API
-
 import React from 'react';
 import PostsList from '../../components/PostsList';
 import styles from '../../styles/Home.module.css';
 import {server} from '../../config/index'
+import MetaData from './../../components/MetaData'
 
 
 // //get data from apiData file // using Api route
@@ -34,6 +34,7 @@ function Blog({ posts }) {
   console.log(posts);
   return (
     <div className={styles.container}>
+            <MetaData title = 'Blog'/>
       <h1 className={styles.title}>Blog Posts</h1>
       <PostsList posts={posts} style={{ marginTop: '30px' }} />
     </div>

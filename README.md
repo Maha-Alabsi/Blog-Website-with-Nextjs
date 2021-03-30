@@ -11,3 +11,4 @@ Concepts I learned in Next js:
 3. next/link & next/router & next/image & next/head
 4. Data Fetching: "getStaticProps" & "getServerSideProps" & "getStaticPaths"
 5. Dynamic Routes
+6. API Routes
